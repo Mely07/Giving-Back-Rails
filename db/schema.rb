@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_025712) do
+ActiveRecord::Schema.define(version: 2020_06_03_041838) do
 
   create_table "beneficiaries", force: :cascade do |t|
     t.string "recipient"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2020_06_03_025712) do
   end
 
   create_table "philanthropic_initiatives", force: :cascade do |t|
-    t.string "recipient"
-    t.string "city"
-    t.string "state"
+    t.string "name"
+    t.integer "pledged_amount"
+    t.text "goal"
     t.integer "business_id"
     t.integer "beneficiary_id"
     t.datetime "created_at", null: false
