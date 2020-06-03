@@ -1,0 +1,2 @@
+class PhilanthropicInitiativesController < ApplicationController
+end

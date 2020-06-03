@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipient: MyString
+  city: MyString
+  state: MyString
+  business_id: 1
+  beneficiary_id: 
+
+two:
+  recipient: MyString
+  city: MyString
+  state: MyString
+  business_id: 1
+  beneficiary_id: 

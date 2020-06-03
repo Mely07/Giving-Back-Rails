@@ -1,0 +1,2 @@
+class PhilanthropicInitiative < ApplicationRecord
+end
