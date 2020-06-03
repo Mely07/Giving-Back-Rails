@@ -1,0 +1,26 @@
+<h3>Registration Form:</h3>
+<%= form_for @business do |f| %>
+    <%= f.label "Name:" %><br/>
+    <%= f.text_field :name%>
+    <br/>
+    <%= f.label "Sector:" %><br/>
+    <%= f.text_field :sector %>
+    <br/>
+    Headquarters<br/>
+    <%= f.label "City:" %><br/>
+    <%= f.text_field :city %>
+    <br/>
+    <%= f.label "State:" %><br/>
+    <%= f.text_field :state %>
+    <br/>
+    <%= f.label "Website:" %><br/>
+    <%= f.text_field :website %>
+    <br/>
+    <%= f.label "Username:" %><br/>
+    <%= f.text_field :username %>
+    <br/>
+    <%= f.label "Password:" %><br/>
+    <%= f.password_field :password %>
+    <br/>
+    <%= f.submit %>
+<% end %>

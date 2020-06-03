@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_041838) do
+ActiveRecord::Schema.define(version: 2020_06_03_171744) do
 
   create_table "beneficiaries", force: :cascade do |t|
     t.string "recipient"
@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(version: 2020_06_03_041838) do
   create_table "businesses", force: :cascade do |t|
     t.string "name"
     t.string "sector"
-    t.string "headquarters"
+    t.string "city"
     t.string "website"
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
   end
 
   create_table "philanthropic_initiatives", force: :cascade do |t|
