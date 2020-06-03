@@ -5,7 +5,16 @@ class BusinessesController < ApplicationController
 
     def create 
         @business = Business.create(business_params)
+        session[:business_id] = @business.id
+        redirect_to business_path(@business)
+    end
 
+    def show 
+        if Business.find_by(id: session[:business_id]) 
+            @business = Business.find_by(id: session[:business_id]) 
+        else 
+            redirect_to '/'
+        end
     end
 
     private

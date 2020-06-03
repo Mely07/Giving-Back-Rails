@@ -7,8 +7,9 @@ class SessionsController < ApplicationController
         @business = Business.find_by(username: params[:username])
         if @business.authenticate(params[:password])
             session[:business_id] = @business.id
+            redirect_to business_path(@business)
         else
-            redirect tp '/signin'
+            redirect to '/signin'
         end
     end
 
