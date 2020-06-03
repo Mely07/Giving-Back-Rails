@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root to: 'pages#home'
+  
+  
   resources :philanthropic_initiatives
   resources :beneficiaries
   resources :businesses
