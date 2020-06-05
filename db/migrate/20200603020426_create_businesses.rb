@@ -5,7 +5,7 @@ class CreateBusinesses < ActiveRecord::Migration[5.2]
       t.string :sector
       t.string :headquarters
       t.string :website
-      t.string :username
+      t.string :email
       t.string :password_digest
 
       t.timestamps
