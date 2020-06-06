@@ -10,7 +10,11 @@ class BeneficiariesController < ApplicationController
 
     def create 
         @beneficiary = Beneficiary.create(beneficiary_params)
-        redirect_to beneficiary_path(@beneficiary)
+        if @beneficiary.valid?
+            redirect_to beneficiary_path(@beneficiary)
+        else 
+            render :new
+        end
     end
 
     def show 

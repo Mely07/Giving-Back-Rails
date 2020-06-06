@@ -4,5 +4,10 @@ class PhilanthropicInitiativesController < ApplicationController
         @beneficiary = Beneficiary.find_by(id: params[:beneficiary_id])
         
         @philanthropic_initiative = PhilanthropicInitiative.new(business: @business, beneficiary: @beneficiary)
+        if @philanthropic_initiative.valid?
+            redirect_to philanthropic_initiative_path(@@philanthropic_initiative)
+        else 
+            render :new
+        end
     end
 end
