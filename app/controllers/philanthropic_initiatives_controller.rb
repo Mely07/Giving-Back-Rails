@@ -6,7 +6,7 @@ class PhilanthropicInitiativesController < ApplicationController
     def create 
         @philanthropic_initiative = PhilanthropicInitiative.create(philanthropic_initiative_params)
 
-        redirect_to @philanthropic_initiative.business #philanthropic_initiative_path(@philanthropic_initiative)
+        redirect_to @philanthropic_initiative.business 
     end
 
     private

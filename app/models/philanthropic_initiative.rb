@@ -4,5 +4,5 @@ class PhilanthropicInitiative < ApplicationRecord
 
     validates_presence_of :name, :goal
 
-    accepts_nested_attributes_for :beneficiary, reject_if: :all_blank 
+    accepts_nested_attributes_for :beneficiary
 end

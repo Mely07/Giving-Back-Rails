@@ -1,6 +1,11 @@
 class BusinessesController < ApplicationController
+    def index 
+        @businesses= Business.all
+    end
+    
     def new 
         @business = Business.new
+        @business.philanthropic_initiatives.build
     end
 
     def create 
@@ -23,6 +28,6 @@ class BusinessesController < ApplicationController
 
     private
     def business_params
-        params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password)
+        params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password, philanthropic_initiatives_attributes: [:name, :pledged_amount, :goal, beneficiary_attributes: [:recipient, :city, :state]] )
     end
 end
