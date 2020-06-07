@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :philanthropic_initiatives
   resources :beneficiaries
   resources :businesses
+  resources :businesses, only: [:show, :index] do
+    resources :philanthropic_initiatives, only: [:show, :index, :new]
+  end
+
   resources :sessions
 
   get '/signin' => 'sessions#new'

@@ -26,6 +26,20 @@ class BusinessesController < ApplicationController
         end
     end
 
+    def edit 
+        @business = Business.find_by(id: params[:id])
+    end
+
+    def update 
+        @business = Business.find_by(id: params[:id])
+        @business.update(business_params)
+        if @business.save 
+            redirect_to business_path(@business)
+        else
+            render 'edit'
+        end
+    end
+
     private
     def business_params
         params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password, philanthropic_initiatives_attributes: [:name, :pledged_amount, :goal, beneficiary_attributes: [:recipient, :city, :state]] )
