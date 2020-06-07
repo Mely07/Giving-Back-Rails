@@ -1,3 +1,14 @@
+<% if @philanthropic_initiative.errors.any? %>
+    <div id="error_explanation">
+        <h2>There were some errors:</h2>
+        <ul>
+        <% @philanthropic_initiative.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
 Philanthropic Initiative<br/>
 <%= form_for @philanthropic_initiative do |pi_f| %>
     <%= pi_f.hidden_field :business_id %>

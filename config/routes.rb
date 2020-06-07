@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :beneficiaries
   resources :businesses
   resources :businesses, only: [:show, :index] do
-    resources :philanthropic_initiatives, only: [:show, :index, :new]
+    resources :philanthropic_initiatives, only: [:show, :index, :new, :edit]
   end
 
   resources :sessions

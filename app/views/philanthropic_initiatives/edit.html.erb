@@ -1,0 +1,26 @@
+<% if @philanthropic_initiative.errors.any? %>
+    <div id="error_explanation">
+        <h2>There were some errors:</h2>
+        <ul>
+        <% @philanthropic_initiative.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
+Philanthropic Initiative<br/>
+<%= form_for @philanthropic_initiative do |pi_f| %>
+    <%= pi_f.hidden_field :business_id %>
+    
+    <%= pi_f.label "Name:" %><br/>
+    <%= pi_f.text_field :name %><br>
+
+    <%= pi_f.label "Pledged Amount:" %><br/>
+    <%= pi_f.text_field :pledged_amount %><br>
+
+    <%= pi_f.label "Goal:" %><br/>
+    <%= pi_f.text_area :goal %><br>
+    
+<%= pi_f.submit %>
+<%end%>
