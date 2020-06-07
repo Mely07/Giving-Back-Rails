@@ -14,7 +14,7 @@ class BusinessesController < ApplicationController
     end
 
     def show 
-        if Business.find_by(id: session[:business_id]) && session[:business_id] #
+        if Business.find_by(id: session[:business_id]) && session[:business_id] 
             @business = Business.find_by(id: session[:business_id]) 
         else 
             redirect_to '/'

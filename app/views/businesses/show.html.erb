@@ -4,6 +4,40 @@
 <%=@business.state%><br/>
 <%=@business.website%><br/>
 
+<h4>Business' Philanthropic Initiatives:</h4>
+<ul>
+<% @business.philanthropic_initiatives.each do |initiative| %>
+    <li><%= initiative.name%></li>
+<% end %>
+</ul>
+
+<h4>Add an Initiative:</h4>
+<%= form_for @business.philanthropic_initiatives.build  do |f| %>
+     <%= f.hidden_field :business_id, value: @business.id %>
+
+    <%= f.label "Name" %>
+    <%= f.text_field :name %><br>
+
+    <%= f.label "Pledged Amount" %>
+    <%= f.text_field :pledged_amount %><br>
+
+    <%= f.label "Goal" %>
+    <%= f.text_area :goal %><br>
+
+     <%= f.fields_for :beneficiary, Beneficiary.new  do |beneficiary_f| %>
+        <%= beneficiary_f.label "New Recipient:" %>
+        <%= beneficiary_f.text_field :recipient %><br>
+
+        <%= beneficiary_f.label "City:" %>
+        <%= beneficiary_f.text_field :city %><br>
+        
+        <%= beneficiary_f.label "State:" %>
+        <%= beneficiary_f.text_field :state %><br>
+    <%end%>
+
+    <%= f.submit %> 
+<% end %>
+
 <%= link_to "Edit", edit_business_path(@business)%>
 <%= link_to "Log out", logout_path %>
 

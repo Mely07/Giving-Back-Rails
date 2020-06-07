@@ -66,3 +66,5 @@ gem 'pry'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+
+gem 'flash'
