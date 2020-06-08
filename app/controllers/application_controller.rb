@@ -7,13 +7,15 @@ protect_from_forgery with: :exception
         use Rack::Flash, :sweep => true
     end
 
-    helper_method :current_business, :is_logged_in?
+    helper_method :current_business, :logged_in
 
     def current_business
         current_business = Business.find_by(id: session[:business_id])
     end
 
-    def is_logged_in?
-        current_business != nil
+    def logged_in
+        unless current_business != nil
+            redirect_to '/'
+        end
     end
 end

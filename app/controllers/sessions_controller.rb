@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    before_action :logged_in, only: [:destroy]
+    
     def new 
        @businesses = Business.all
     end

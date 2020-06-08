@@ -33,5 +33,31 @@
     <%= f.label "Password:" %><br/>
     <%= f.password_field :password %>
     <br/>
+
+        Recipient<br/>
+        <%= f.fields_for :beneficiaries do |b_f| %>
+        <%= b_f.label "Recipient:" %><br/>
+        <%= b_f.text_field :recipient %><br>
+
+        <%= b_f.label "City:" %><br/>
+        <%= b_f.text_field :city%><br>
+
+        <%= b_f.label "State:" %><br/>
+        <%= b_f.text_field :state %><br>
+
+            Philanthropic Initiative<br/>
+            <%= b_f.fields_for :philanthropic_initiative, PhilanthropicInitiative.new  do |pi_f| %>
+            <%= pi_f.label "Name:" %><br/>
+            <%= pi_f.text_field :name %><br>
+
+            <%= pi_f.label "Pledged Amount:" %><br/>
+            <%= pi_f.text_field :pledged_amount %><br>
+            
+            <%= pi_f.label "Goal:" %><br/>
+            <%= pi_f.text_area :goal %><br>
+            <%end%>
+        <%end%>
+    <br/>
+
     <%= f.submit %>
 <% end %>

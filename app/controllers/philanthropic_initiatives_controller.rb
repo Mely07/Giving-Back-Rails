@@ -1,12 +1,12 @@
 class PhilanthropicInitiativesController < ApplicationController
-    before_action :set_philanthropic_initiative
+    before_action :set_philanthropic_initiative, :logged_in
 
     def index
         @philanthropic_initiatives= PhilanthropicInitiative.all
     end
         
     def new 
-        @philanthropic_initiative = PhilanthropicInitiative.new(business_id: params[:business_id])
+        @philanthropic_initiative = PhilanthropicInitiative.new(beneficiary_id: params[:beneficiary_id])
     end
     
     def create 
@@ -27,7 +27,7 @@ class PhilanthropicInitiativesController < ApplicationController
 
     private
     def philanthropic_initiative_params
-        params.require(:philanthropic_initiative).permit(:name, :pledged_amount, :goal, :business_id, beneficiary_attributes: [:recipient, :city, :state])
+        params.require(:philanthropic_initiative).permit(:name, :pledged_amount, :goal, :beneficiary_id, philanthropic_initiative_attributes: [:name, :pledged_amount, :goal])
     end
 
     def set_philanthropic_initiative

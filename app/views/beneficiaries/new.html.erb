@@ -9,4 +9,31 @@
     </div>
 <% end %>
 
-<%= render 'form' %>  
+
+
+Recipient<br/>
+<%= form_for @beneficiary do |f| %>
+    <%= f.label "Recipient:" %><br/>
+    <%= f.text_field :recipient %><br>
+
+    <%= f.label "City:" %><br/>
+    <%= f.text_field :city%><br>
+
+    <%= f.label "State:" %><br/>
+    <%= f.text_field :state %><br>
+
+        Philanthropic Initiative<br/>
+        <%= f.fields_for :philanthropic_initiative, PhilanthropicInitiative.new  do |pi_f| %>
+            <%= pi_f.label "Name:" %><br/>
+            <%= pi_f.text_field :name %><br>
+
+            <%= pi_f.label "Pledged Amount:" %><br/>
+            <%= pi_f.text_field :pledged_amount %><br>
+            
+            <%= pi_f.label "Goal:" %><br/>
+            <%= pi_f.text_area :goal %><br>
+        <%end%>
+    <br/>
+
+<%= f.submit %>
+<%end%>

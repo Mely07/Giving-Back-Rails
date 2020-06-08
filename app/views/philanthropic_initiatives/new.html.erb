@@ -22,18 +22,5 @@ Philanthropic Initiative<br/>
     <%= pi_f.label "Goal:" %><br/>
     <%= pi_f.text_area :goal %><br>
 
-    Recipient<br/>
-        <%= pi_f.fields_for :beneficiary, Beneficiary.new  do |beneficiary_f| %>
-            <%= beneficiary_f.label "New Recipient:" %><br/>
-            <%= beneficiary_f.text_field :recipient %><br>
-
-            <%= beneficiary_f.label "City:" %><br/>
-            <%= beneficiary_f.text_field :city %><br>
-            
-            <%= beneficiary_f.label "State:" %><br/>
-            <%= beneficiary_f.text_field :state %><br>
-        <%end%>
-    <br/>
-    
 <%= pi_f.submit %>
 <%end%>

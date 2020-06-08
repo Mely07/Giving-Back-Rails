@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   
   resources :philanthropic_initiatives
-  resources :beneficiaries
+  resources :beneficiaries 
   resources :businesses
-  resources :businesses, only: [:show, :index] do
-    resources :philanthropic_initiatives, only: [:show, :index, :new, :edit]
+  
+  resources :businesses do
+    resources :beneficiaries
   end
 
   resources :sessions
