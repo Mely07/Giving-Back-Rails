@@ -3,3 +3,10 @@
             <li><%=link_to business.name, business_path(business)%></li>
     <%end%>
 </ul>
+
+<h4>Tech Companies</h4>
+<ul>
+    <%@in_tech.each do |t|%>
+      <li> <%=t.name%></li>
+    <%end%>
+</ul>

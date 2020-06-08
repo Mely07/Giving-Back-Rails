@@ -1,8 +1,15 @@
 <ul>
     <%@beneficiaries.each do |beneficiary|%>
-            <li><%=beneficiary.recipient%></li>
+        <li><%=beneficiary.recipient%></li>
     <%end%>
 </ul>
 
+
+<h4>Local Beneficiaries</h4>
+<ul>
+    <%@local.each do |l|%>
+    <li><%=l.recipient%></li>
+    <%end%>
+</ul>
 
 

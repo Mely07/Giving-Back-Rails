@@ -2,6 +2,8 @@ class BeneficiariesController < ApplicationController
     def index
         @beneficiaries = Beneficiary.all
         @business = Business.find_by(id: session[:business_id])
+        @local = Beneficiary.local
+
     end
 
     def new

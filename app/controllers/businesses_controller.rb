@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
     def index 
         @businesses= Business.all
+        @in_tech = Business.in_tech
     end
     
     def new 

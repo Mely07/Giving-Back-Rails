@@ -9,5 +9,6 @@ class Business < ApplicationRecord
 
     accepts_nested_attributes_for :philanthropic_initiatives
     accepts_nested_attributes_for :beneficiaries
-
+    
+    scope :in_tech, -> { where(sector: "Tech") }
 end
