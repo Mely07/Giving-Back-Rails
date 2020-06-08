@@ -1,4 +1,6 @@
 class BusinessesController < ApplicationController
+    before_action :set_business 
+
     def index 
         @businesses= Business.all
         @in_tech = Business.in_tech
@@ -20,19 +22,17 @@ class BusinessesController < ApplicationController
     end
 
     def show 
-        if Business.find_by(id: session[:business_id]) && session[:business_id] 
-            @business = Business.find_by(id: session[:business_id]) 
+        if is_logged_in? #current_business && 
+            @business = current_business
         else 
             redirect_to '/'
         end
     end
 
     def edit 
-        @business = Business.find_by(id: params[:id])
     end
 
     def update 
-        @business = Business.find_by(id: params[:id])
         @business.update(business_params)
         if @business.save 
             redirect_to business_path(@business)
@@ -44,5 +44,9 @@ class BusinessesController < ApplicationController
     private
     def business_params
         params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password, philanthropic_initiatives_attributes: [:name, :pledged_amount, :goal, beneficiary_attributes: [:recipient, :city, :state]] )
+    end
+
+    def set_business 
+        @business = Business.find_by(id: params[:id])
     end
 end

@@ -68,3 +68,4 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 
 gem 'flash'
+gem 'rack-flash3'

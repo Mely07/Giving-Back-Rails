@@ -1,9 +1,10 @@
 class BeneficiariesController < ApplicationController
+    before_action :set_beneficiary
+
     def index
         @beneficiaries = Beneficiary.all
-        @business = Business.find_by(id: session[:business_id])
+        @business = current_business
         @local = Beneficiary.local
-
     end
 
     def new
@@ -20,15 +21,12 @@ class BeneficiariesController < ApplicationController
     end
 
     def show 
-        @beneficiary = Beneficiary.find_by(id: params[:id])
     end
 
     def edit 
-        @beneficiary = Beneficiary.find_by(id: params[:id])
     end
 
     def update 
-        @beneficiary = Beneficiary.find_by(id: params[:id])
         @beneficiary.update(beneficiary_params)
         if @beneficiary.save 
             redirect_to beneficiary_path(@beneficiary)
@@ -40,6 +38,10 @@ class BeneficiariesController < ApplicationController
     private 
     def beneficiary_params
         params.require(:beneficiary).permit(:recipient, :city, :state)
+    end
+
+    def set_beneficiary
+        @beneficiary = Beneficiary.find_by(id: params[:id])
     end
 
 

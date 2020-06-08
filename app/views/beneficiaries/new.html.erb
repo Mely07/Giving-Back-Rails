@@ -9,15 +9,4 @@
     </div>
 <% end %>
 
-<%= form_for @beneficiary do |f| %>
-    <%= f.label "Recipient" %><br/>
-    <%= f.text_field :recipient%>
-    <br/>
-    <%= f.label "City" %><br/>
-    <%= f.text_field :city %>
-    <br/>
-    <%= f.label "State" %><br/>
-    <%= f.text_field :state %>
-    <br/>
-    <%= f.submit %>
-<% end %>
+<%= render 'form' %>  

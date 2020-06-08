@@ -159,6 +159,8 @@ GEM
     puma (3.12.6)
     puma (3.12.6-java)
     rack (2.2.2)
+    rack-flash3 (1.0.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.3)
@@ -268,6 +270,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   pry
   puma (~> 3.11)
+  rack-flash3
   rails (~> 5.2.4, >= 5.2.4.3)
   sass-rails (~> 5.0)
   selenium-webdriver
