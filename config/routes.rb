@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   
-  resources :philanthropic_initiatives
-  resources :beneficiaries 
+  resources :philanthropic_initiatives, except: :new
+  resources :beneficiaries, except: :new
   resources :businesses
   
   resources :businesses do

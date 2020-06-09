@@ -3,15 +3,12 @@
 <%=@philanthropic_initiative.goal%><br/>
 
 
+<%=link_to @philanthropic_initiative.beneficiary.recipient, beneficiary_path(@philanthropic_initiative.beneficiary)%>
+
+
 <%
 =begin%>
  <%= link_to "Edit", edit_business_philanthropic_initiative_path(@philanthropic_initiative.business, @philanthropic_initiative)%><br/> 
 <%
 =end%>
 <br/>
-<%
-=begin%>
- <%=link_to @philanthropic_initiative.beneficiary.recipient, beneficiary_path(@philanthropic_initiative.beneficiary) %> 
-<%
-=end%>
-

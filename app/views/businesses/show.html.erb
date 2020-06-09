@@ -1,24 +1,24 @@
 <h3><%=@business.name%></h3><br/>
+<%=@business.sector%><br/>
 <%=@business.email%><br/>
 <%=@business.city%><br/>
 <%=@business.state%><br/>
 <%=@business.website%><br/>
+<br/>
 
+Business' Philanthropic Initiatives:
+<% @business.philanthropic_initiatives.each do |initiative| %>
+    <%= link_to initiative.name, philanthropic_initiative_path(initiative) %>
+<%end%><br/>
+<br/> 
 
-<%= link_to "Add a Beneficiary:", new_business_beneficiary_path(@business)%><br/> 
+<%= link_to "Add a Beneficiary", new_business_beneficiary_path(@business)%><br/> 
 
 <%= link_to "Edit", edit_business_path(@business)%><br/>
 <%= link_to "Log out", logout_path %> 
 
-<%
-=begin%>
- <h4>Business' Philanthropic Initiatives:</h4>
-<ul>
-<% @business.philanthropic_initiatives.each do |initiative| %>
-    <li><%= link_to initiative.name, philanthropic_initiative_path(initiative) %></li>
-<% end %>
-</ul>
-<br/> 
-<%
-=end%>
+
+
+
+
 
