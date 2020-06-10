@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             session[:business_id] = @business.id
             redirect_to business_path(@business)
         else
-            redirect to '/signin'
+            redirect_to signin_path
         end
     end
 
@@ -26,8 +26,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy 
-        session.destroy
-        redirect_to '/signin'
+            session.destroy
+            redirect_to signin_path
     end
       
     private

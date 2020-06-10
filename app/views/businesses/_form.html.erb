@@ -1,0 +1,37 @@
+<% if @business.errors.any? %>
+    <div id="error_explanation">
+        <h2>There were some errors:</h2>
+        <ul>
+        <% @business.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for @business do |f| %>
+    <%= f.label "Name:" %><br/>
+    <%= f.text_field :name%>
+    <br/>
+    <%= f.label "Sector:" %><br/>
+    <%= f.text_field :sector %>
+    <br/>
+    Headquarters<br/>
+    <%= f.label "City:" %><br/>
+    <%= f.text_field :city %>
+    <br/>
+    <%= f.label "State:" %><br/>
+    <%= f.text_field :state %>
+    <br/>
+    <%= f.label "Website:" %><br/>
+    <%= f.text_field :website %>
+    <br/>
+    <%= f.label "Email:" %><br/>
+    <%= f.email_field :email %>
+    <br/>
+    <%= f.label "Password:" %><br/>
+    <%= f.password_field :password %>
+    <br/>
+
+    <%= f.submit %>
+<% end %> 

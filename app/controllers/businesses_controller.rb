@@ -1,14 +1,14 @@
 class BusinessesController < ApplicationController
-    before_action :set_business, :logged_in, only: [:show, :edit, :update]
+    before_action :set_business, :logged_in, only: [:index, :show, :edit, :update, :destroy]
 
     def index 
-        @businesses= Business.all
+        @businesses = Business.all
         @in_tech = Business.in_tech
     end
 
     def new 
         @business = Business.new
-        @business.philanthropic_initiatives.build
+        @business.philanthropic_initiatives.build #?
     end
 
     def create 
@@ -24,22 +24,24 @@ class BusinessesController < ApplicationController
     end
 
     def show 
-        if current_business
-            @business = current_business
-        else 
-            redirect_to '/'
+    end
+   
+    def edit 
+        if current_business.id != params[:id].to_i
+            redirect_to root_path
         end
     end
 
-    def edit 
-    end
-
     def update 
-        @business.update(business_params)
-        if @business.save 
-            redirect_to business_path(@business)
-        else
-            render 'edit'
+        if current_business.id == params[:id].to_i
+            @business.update(business_params)
+            if @business.save 
+                redirect_to business_path(@business)
+            else
+                render 'edit'
+            end
+        else 
+            redirect_to root_path
         end
     end
 

@@ -2,27 +2,43 @@ class PhilanthropicInitiativesController < ApplicationController
     before_action :set_philanthropic_initiative, :logged_in
 
     def index
-        @philanthropic_initiatives= PhilanthropicInitiative.all
+        @philanthropic_initiatives = PhilanthropicInitiative.all
     end
 
     def new 
-        @philanthropic_initiative = PhilanthropicInitiative.new(business_id: params[:business_id])
+       
+        if current_business.id == params[:philanthropic_initiative][:business_id].to_i
+            @philanthropic_initiative = PhilanthropicInitiative.new(business_id: params[:business_id])
+        else
+            redirect_to root_path
+        end
     end
 
     def create 
-        @philanthropic_initiative = PhilanthropicInitiative.create(philanthropic_initiative_params)
-        redirect_to philanthropic_initiatives_path
+         if current_business.id == params[:philanthropic_initiative][:business_id].to_i
+            @philanthropic_initiative = PhilanthropicInitiative.create(philanthropic_initiative_params)
+            redirect_to philanthropic_initiatives_path
+        else
+            redirect_to root_path
+        end
     end
 
     def show 
     end
 
     def edit 
+        if current_business.id != params[:philanthropic_initiative][:business_id].to_i
+            redirect_to root_path
+        end
     end
 
     def update 
-        @philanthropic_initiative.update(philanthropic_initiative_params)
-        redirect_to philanthropic_initiative_path(@philanthropic_initiative)
+        if current_business.id == params[:philanthropic_initiative][:business_id].to_i
+            @philanthropic_initiative.update(philanthropic_initiative_params)
+            redirect_to philanthropic_initiative_path(@philanthropic_initiative)
+        else 
+            redirect_to root_path
+        end
     end
     
     private

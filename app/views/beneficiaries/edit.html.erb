@@ -1,3 +1,5 @@
+ <%
+=begin%>
  <% if @beneficiary.errors.any? %>
     <div id="error_explanation">
         <h2>There were some errors:</h2>
@@ -22,7 +24,9 @@ Recipient<br/>
     <%= f.text_field :state %><br/>
 
 <%= f.submit %>
-<%end%> 
+<%end%>  
+<%
+=end%>
 
 
 

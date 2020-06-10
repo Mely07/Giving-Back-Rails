@@ -15,7 +15,11 @@ protect_from_forgery with: :exception
 
     def logged_in
         unless current_business != nil
-            redirect_to '/'
+            redirect_to root_path
         end
     end
+
+    # def current_business_logged_in
+
+    # end
 end
