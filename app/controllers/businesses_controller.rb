@@ -8,13 +8,11 @@ class BusinessesController < ApplicationController
 
     def new 
         @business = Business.new
-        @business.philanthropic_initiatives.build #?
+        @business.philanthropic_initiatives.build 
     end
 
     def create 
-        
         @business = Business.create(business_params)
-
         if @business.save
             session[:business_id] = @business.id
             redirect_to business_path(@business)
@@ -24,25 +22,31 @@ class BusinessesController < ApplicationController
     end
 
     def show 
+        @philanthropic_initiatives = @business.philanthropic_initiatives
     end
    
     def edit 
-        if current_business.id != params[:id].to_i
-            redirect_to root_path
-        end
+        # if current_business.id != params[:id].to_i
+        #     flash[:danger] = "Invalid request!"
+        #     redirect_to root_path
+        # end
+        correct_business
     end
 
     def update 
-        if current_business.id == params[:id].to_i
+        if !correct_business
+        #if current_business.id == params[:id].to_i
             @business.update(business_params)
             if @business.save 
                 redirect_to business_path(@business)
             else
                 render 'edit'
             end
-        else 
-            redirect_to root_path
         end
+
+        # else 
+        #     redirect_to root_path
+        # end
     end
 
     private
@@ -52,6 +56,13 @@ class BusinessesController < ApplicationController
 
     def set_business 
         @business = Business.find_by(id: params[:id])
+    end
+
+    def correct_business
+        if current_business.id != params[:id].to_i
+            flash[:danger] = "Unauthorized access!"
+            redirect_to root_path
+        end
     end
 end
 

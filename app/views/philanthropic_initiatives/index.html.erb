@@ -1,6 +1,1 @@
- <ul>
-    <%@philanthropic_initiatives.each do |initiative|%>
-            <li><%=link_to initiative.name, philanthropic_initiative_path(initiative) %></li>
-    <%end%>
-</ul> 
-
+<%= render partial: 'philanthropic_initiatives', locals: {philanthropic_initiatives: @philanthropic_initiatives}%>
