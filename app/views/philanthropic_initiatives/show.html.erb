@@ -1,14 +1,10 @@
-<h3><%=@philanthropic_initiative.name%></h3><br/>
-<%=@philanthropic_initiative.pledged_amount%><br/>
-<%=@philanthropic_initiative.goal%><br/>
+<h3><%=@philanthropic_initiative.name%></h3>
 
+Amount Pledged:<%=@philanthropic_initiative.pledged_amount%><br/>
+Company:<%=@philanthropic_initiative.business.name%><br/>
+Goal:<%=@philanthropic_initiative.goal%><br/>
 
-<%=link_to @philanthropic_initiative.beneficiary.recipient, beneficiary_path(@philanthropic_initiative.beneficiary)%>
+Recipients:<%=link_to @philanthropic_initiative.beneficiary.recipient, beneficiary_path(@philanthropic_initiative.beneficiary) %>
 
+<%= link_to "Edit", edit_business_philanthropic_initiative_path(@philanthropic_initiative.business, @philanthropic_initiative)%> 
 
-<%
-=begin%>
- <%= link_to "Edit", edit_business_philanthropic_initiative_path(@philanthropic_initiative.business, @philanthropic_initiative)%><br/> 
-<%
-=end%>
-<br/>

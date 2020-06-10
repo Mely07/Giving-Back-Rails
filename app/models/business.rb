@@ -7,8 +7,9 @@ class Business < ApplicationRecord
     validates_presence_of :name, :sector, :city, :state, :email, :password
     validates_uniqueness_of :name, :email
 
-    accepts_nested_attributes_for :philanthropic_initiatives
     accepts_nested_attributes_for :beneficiaries
+    accepts_nested_attributes_for :philanthropic_initiatives
     
-    scope :in_tech, -> { where(sector: "Tech") }
+    
+    scope :in_tech, -> { where(sector: "Technology") }
 end

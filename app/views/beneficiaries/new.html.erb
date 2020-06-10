@@ -1,4 +1,6 @@
-<% if @beneficiary.errors.any? %>
+<%
+=begin%>
+ <% if @beneficiary.errors.any? %>
     <div id="error_explanation">
         <h2>There were some errors:</h2>
         <ul>
@@ -9,6 +11,7 @@
     </div>
 <% end %>
 
+<%= render 'form' %>   
 
 
 Recipient<br/>
@@ -22,18 +25,7 @@ Recipient<br/>
     <%= f.label "State:" %><br/>
     <%= f.text_field :state %><br>
 
-        Philanthropic Initiative<br/>
-        <%= f.fields_for :philanthropic_initiative, PhilanthropicInitiative.new  do |pi_f| %>
-            <%= pi_f.label "Name:" %><br/>
-            <%= pi_f.text_field :name %><br>
-
-            <%= pi_f.label "Pledged Amount:" %><br/>
-            <%= pi_f.text_field :pledged_amount %><br>
-            
-            <%= pi_f.label "Goal:" %><br/>
-            <%= pi_f.text_area :goal %><br>
-        <%end%>
-    <br/>
-
 <%= f.submit %>
-<%end%>
+<%end%>  
+<%
+=end%>

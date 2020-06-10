@@ -1,16 +1,21 @@
 <ul>
-<%@beneficiaries.each do |beneficiary|%>
-   <li><%=beneficiary.recipient %></li>
-<%end%>
+    <%@beneficiaries.each do |beneficiary|%>
+    <li><%=link_to beneficiary.recipient, beneficiary_path(beneficiary) %></li>
+    <%end%>
 </ul>
 
-<!-- Add business for each -->
 
 <h4>Local Beneficiaries</h4>
 <ul>
     <%@local.each do |l|%>
-        <li><%=l.recipient%></li>
+        <li><%=l.recipient%>, Businesses: <%=l.businesses.size%></li>
+        <ul>
+            <%l.businesses do |b|%>
+                <li>Business ID: <%=b.id%>, Business Name: <%=b.name%></li>
+            <%end%>
+        </ul>
     <%end%>
 </ul>
+
 
 

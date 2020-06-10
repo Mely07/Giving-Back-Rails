@@ -2,3 +2,13 @@
 <%="City: #{@beneficiary.city}"%><br/>
 <%="State: #{@beneficiary.state}"%>
 <br/>
+
+<%=link_to "Edit", edit_beneficiary_path(@beneficiary)%>
+
+<!--
+ Philanthropic Initiatives Funding this recipient:
+<% @beneficiary.philanthropic_initiatives.each do |initiative| %>
+    <%= link_to initiative.name, philanthropic_initiative_path(initiative) %>
+<%end%><br/>
+<br/>  
+-->
