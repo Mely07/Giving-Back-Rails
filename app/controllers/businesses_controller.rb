@@ -13,7 +13,6 @@ class BusinessesController < ApplicationController
 
     def create 
         @business = Business.create(business_params)
-        
         if @business.save
             session[:business_id] = @business.id
             redirect_to business_path(@business)
@@ -27,32 +26,30 @@ class BusinessesController < ApplicationController
     end
    
     def edit 
-        # if current_business.id != params[:id].to_i
-        #     flash[:danger] = "Invalid request!"
-        #     redirect_to root_path
-        # end
         correct_business
     end
 
     def update 
         if !correct_business
-        #if current_business.id == params[:id].to_i
-            @business.update(business_params)
+        @business.update(business_params)
             if @business.save 
                 redirect_to business_path(@business)
             else
                 render 'edit'
             end
         end
+    end
 
-        # else 
-        #     redirect_to root_path
-        # end
+    def destroy
+        if !correct_business
+            @business.delete
+            redirect_to root_path
+        end
     end
 
     private
     def business_params
-        params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password, philanthropic_initiatives_attributes: [:name, :pledged_amount, :goal, beneficiary_attributes: [:recipient, :city, :state]] )
+        params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password, :password_confirmation, philanthropic_initiatives_attributes: [:name, :pledged_amount, :goal, beneficiary_attributes: [:recipient, :city, :state]] )
     end
 
     def set_business 

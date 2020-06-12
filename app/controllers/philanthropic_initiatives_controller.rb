@@ -7,22 +7,20 @@ class PhilanthropicInitiativesController < ApplicationController
 
     def new 
         if !correct_business
-        # if current_business.id == params[:philanthropic_initiative][:business_id].to_i
             @philanthropic_initiative = PhilanthropicInitiative.new(business_id: params[:business_id])
-        # else
-        #     redirect_to root_path
-        # end
+            @philanthropic_initiative.build_beneficiary
         end
+
     end
 
     def create 
         if !correct_business
-         #if current_business.id == params[:philanthropic_initiative][:business_id].to_i
             @philanthropic_initiative = PhilanthropicInitiative.create(philanthropic_initiative_params)
-            redirect_to philanthropic_initiatives_path
-        # else
-        #     redirect_to root_path
-        # end
+            if @philanthropic_initiative.save
+                redirect_to philanthropic_initiatives_path
+            else
+                render :new
+            end
         end
     end
 
@@ -30,20 +28,24 @@ class PhilanthropicInitiativesController < ApplicationController
     end
 
     def edit 
-        # if current_business.id != params[:philanthropic_initiative][:business_id].to_i
-        #     redirect_to root_path
-        # end
         correct_business
     end
 
     def update 
-        if !correct_business 
-        # if current_business.id == params[:philanthropic_initiative][:business_id].to_i
+        if !correct_business   
             @philanthropic_initiative.update(philanthropic_initiative_params)
-            redirect_to philanthropic_initiative_path(@philanthropic_initiative)
-        # else 
-        #     redirect_to root_path
-        # end
+            if @philanthropic_initiative.save
+                redirect_to philanthropic_initiative_path(@philanthropic_initiative)
+            else 
+                render 'edit'
+            end
+        end
+    end
+
+    def destroy
+        if !correct_business
+            @philanthropic_initiative.destroy
+            redirect_to business_philanthropic_initiative_path(@philanthropic_initiative.business, @philanthropic_initiative)
         end
     end
     

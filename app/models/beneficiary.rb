@@ -3,7 +3,8 @@ class Beneficiary < ApplicationRecord
     has_many :businesses, through: :philanthropic_initiatives
 
     validates_presence_of :recipient, :city, :state
-
+    validates :state, length: { is: 2 }
+    
     scope :local, -> { where(state: "NY") } 
 
     accepts_nested_attributes_for :businesses
