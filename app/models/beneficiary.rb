@@ -10,3 +10,4 @@ class Beneficiary < ApplicationRecord
     accepts_nested_attributes_for :philanthropic_initiatives
 end
 
+

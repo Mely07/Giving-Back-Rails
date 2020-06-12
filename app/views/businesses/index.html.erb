@@ -1,10 +1,10 @@
 <ul>
     <%@businesses.each do |business|%>
-            <li><%=link_to business.name, business_path(business)%></li>
+            <li><%=link_to business.name, business_path(business), class: "text-info" %></li>
     <%end%>
 </ul>
 
-<h5>Tech Companies:</h5>
+<h6>Tech Companies:</h6>
 <ul>
     <%@in_tech.each do |t|%>
       <li> <%=t.name%></li>

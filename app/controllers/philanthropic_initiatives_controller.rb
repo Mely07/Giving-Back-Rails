@@ -37,7 +37,7 @@ class PhilanthropicInitiativesController < ApplicationController
     end
 
     def update 
-        if !current_business 
+        if !correct_business 
         # if current_business.id == params[:philanthropic_initiative][:business_id].to_i
             @philanthropic_initiative.update(philanthropic_initiative_params)
             redirect_to philanthropic_initiative_path(@philanthropic_initiative)
@@ -57,7 +57,7 @@ class PhilanthropicInitiativesController < ApplicationController
     end
 
     def correct_business
-        if current_business.id != params[:philanthropic_initiative][:business_id].to_i
+        if current_business.id != params[:business_id].to_i
             redirect_to root_path
         end
     end

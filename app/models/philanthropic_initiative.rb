@@ -6,3 +6,4 @@ class PhilanthropicInitiative < ApplicationRecord
 
     accepts_nested_attributes_for :beneficiary
 end
+

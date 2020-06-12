@@ -13,3 +13,4 @@ class Business < ApplicationRecord
     
     scope :in_tech, -> { where(sector: "Technology") }
 end
+

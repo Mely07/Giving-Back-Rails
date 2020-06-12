@@ -9,27 +9,54 @@
     </div>
 <% end %>
 
-Philanthropic Initiative<br/>
+
+<h6>Philanthropic Initiative</h6>
 <%= form_for @philanthropic_initiative do |pi_f| %>
     <%= pi_f.hidden_field :business_id %>
-    
-    <%= pi_f.label "Name:" %><br/>
-    <%= pi_f.text_field :name %><br>
-    <%= pi_f.label "Pledged Amount:" %><br/>
-    <%= pi_f.text_field :pledged_amount %><br>
-    <%= pi_f.label "Goal:" %><br/>
-    <%= pi_f.text_area :goal %><br>
+    <div class="form-group row">
+        <%= pi_f.label "Name:", class: "col-sm-1 col-form-label" %>
+        <div class="col-sm-3">
+            <%= pi_f.text_field :name, class:"form-control"%>
+        </div>
+    </div>
 
-    Recipient<br/>
+    <div class="form-group row">
+        <%= pi_f.label "Amount:", class: "col-sm-1 col-form-label" %>
+        <div class="col-sm-3">
+            <%= pi_f.text_field :pledged_amount, class:"form-control"%>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <%= pi_f.label "Goal:", class: "col-sm-1 col-form-label" %>
+        <div class="col-sm-3">
+            <%= pi_f.text_field :goal, class:"form-control"%>
+        </div>
+    </div>
+
+   <h6>Beneficiary</h6>
         <%= pi_f.fields_for :beneficiary, Beneficiary.new  do |beneficiary_f| %>
-            <%= beneficiary_f.label "New Recipient:" %><br/>
-            <%= beneficiary_f.text_field :recipient %><br>
 
-            <%= beneficiary_f.label "City:" %><br/>
-            <%= beneficiary_f.text_field :city %><br>
+            <div class="form-group row">
+                <%= beneficiary_f.label "Recipient:", class: "col-sm-1 col-form-label" %>
+                <div class="col-sm-3">
+                    <%= beneficiary_f.text_field :recipient, class:"form-control"%>
+                </div>
+            </div>
 
-            <%= beneficiary_f.label "State:" %><br/>
-            <%= beneficiary_f.text_field :state %><br>
+            <div class="form-group row">
+                <%= beneficiary_f.label "City:", class: "col-sm-1 col-form-label" %>
+                <div class="col-sm-3">
+                    <%= beneficiary_f.text_field :city, class:"form-control"%>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <%= beneficiary_f.label "State:", class: "col-sm-1 col-form-label" %>
+                <div class="col-sm-3">
+                    <%= beneficiary_f.text_field :state, class:"form-control"%>
+                </div>
+            </div>
         <%end%>
     <br/>
 

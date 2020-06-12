@@ -1,22 +1,17 @@
 <h3><%=@business.name%></h3><br/>
-<%=@business.sector%><br>
-<%=@business.email%><br/>
-<%=@business.city%><br/>
-<%=@business.state%><br/>
-<%=@business.website%><br/>
-<br>
+<div>Industry: <%=@business.sector%></div>
+<div>Email: <%=@business.email%></div>
+<div>City: <%=@business.city%></div>
+<div>State: <%=@business.state%></div>
+<div>Website: <%=@business.website%></div>
 
-<h5>Business' Philanthropic Initiatives:</h5>
+<h6 class="mt-4">Business' Philanthropic Initiatives:</h6>
 
 <%=render partial: 'philanthropic_initiatives/philanthropic_initiatives', locals: {philanthropic_initiatives: @business.philanthropic_initiatives}%>
 
 
-
-<%= link_to "Add an Initiative:", new_business_philanthropic_initiative_path(@business)%><br/>
-<%= link_to "Edit", edit_business_path(@business)%><br/>
-<%= link_to "Log out", logout_path %>
-
-
+<a href="<%=new_business_philanthropic_initiative_path(@business)%>" class="btn btn-secondary my-2 btn-sm">Add Initiative</a><br/>
+<a href="<%=edit_business_path(@business)%>" class="btn btn-secondary my-2 btn-sm">Edit Business</a><br/>
 
 
 

@@ -1,5 +1,5 @@
  <ul>
     <%@philanthropic_initiatives.each do |initiative|%>
-            <li><%=link_to initiative.name, philanthropic_initiative_path(initiative) %></li>
+            <li><%=link_to initiative.name, philanthropic_initiative_path(initiative), class: "text-info" %></li>
     <%end%>
-</ul> 
+</ul>  
