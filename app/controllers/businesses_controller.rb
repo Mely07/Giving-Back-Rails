@@ -30,21 +30,18 @@ class BusinessesController < ApplicationController
     end
 
     def update 
-        if !correct_business
+        correct_business
         @business.update(business_params)
             if @business.save 
                 redirect_to business_path(@business)
             else
                 render 'edit'
             end
-        end
     end
 
     def destroy
-        if !correct_business
-            @business.delete
-            redirect_to root_path
-        end
+        correct_business
+        @business.destroy
     end
 
     private

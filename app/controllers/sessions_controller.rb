@@ -6,12 +6,16 @@ class SessionsController < ApplicationController
     end
 
     def create 
-        @business = Business.find_by(email: params[:email])  
-        if @business.authenticate(params[:password])
-            session[:business_id] = @business.id
-            redirect_to business_path(@business)
-        else
+        @business = Business.find_by(email: params[:email]) 
+        if !@business 
+            flash[:danger] = "User does not exist. Please sign up!"
+            redirect_to new_business_path
+        elsif @business && !@business.authenticate(params[:password])
+            flash[:danger] = "Incorrect username/password. Please try again!"
             redirect_to signin_path
+        else 
+            session[:business_id] = @business.id
+            redirect_to business_path(@business) 
         end
     end
 
@@ -26,8 +30,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy 
-            session.destroy
-            redirect_to root_path
+        session.destroy
+        redirect_to root_path
     end
       
     private

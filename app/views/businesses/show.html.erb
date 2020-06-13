@@ -1,6 +1,6 @@
 <h3><%=@business.name%></h3><br/>
 <div>Industry: <%=@business.sector%></div>
-<div>Email: <%=@business.email%></div>
+<div>Email: <%=mail_to @business.email, @business.email, class: "text-info" %> </div> 
 <div>City: <%=@business.city%></div>
 <div>State: <%=@business.state%></div>
 <div>Website: <%=@business.website%></div> 
