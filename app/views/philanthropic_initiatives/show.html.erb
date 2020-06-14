@@ -1,11 +1,11 @@
 <h4><%=@philanthropic_initiative.name%></h4>
 
-<div>Amount Pledged:<%=@philanthropic_initiative.pledged_amount%></div>
-<div>Company:<%=@philanthropic_initiative.business.name%></div>
-<div>Goal:<%=@philanthropic_initiative.goal%></div>
+<div><b>Amount Pledged: </b><%=@philanthropic_initiative.pledged_amount%></div>
+<div><b>Company: </b><%=@philanthropic_initiative.business.name%></div>
+<div><b>Goal: </b><%=@philanthropic_initiative.goal%></div>
 
 
-<h6 class="mt-5">Recipients:</h6>
+<h6 class="mt-5">Recipients: </h6>
 <ul>
     <li><%=link_to @philanthropic_initiative.beneficiary.recipient, beneficiary_path(@philanthropic_initiative.beneficiary), class: "text-info"  %></li>
 </ul>
