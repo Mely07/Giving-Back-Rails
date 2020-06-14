@@ -4,12 +4,14 @@
     <%end%>
 </ul>
 
-<h6 class="mt-4">Local Beneficiaries:</h6>
+
+<h6 class="mt-4">Beneficiaries in your area:</h6>
 <ul>
-    <%@local.each do |l|%>
+    <%@locals.each do |l|%>
         <li><%=l.recipient%></li>
     <%end%>
-</ul>
+</ul> 
+
 
 
 

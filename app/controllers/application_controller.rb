@@ -18,8 +18,4 @@ protect_from_forgery with: :exception
             redirect_to root_path
         end
     end
-
-    # def current_business_logged_in
-
-    # end
 end

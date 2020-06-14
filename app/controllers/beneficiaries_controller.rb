@@ -4,19 +4,19 @@ class BeneficiariesController < ApplicationController
     def index
         @beneficiaries = Beneficiary.all
         @business = current_business
-        @local = Beneficiary.local
+        locals 
     end
 
     def show 
     end
 
     def update 
-            @beneficiary.update(beneficiary_params)
-            if @beneficiary.save 
-                redirect_to beneficiary_path(@beneficiary)
-            else
-                render 'edit'
-            end
+        @beneficiary.update(beneficiary_params)
+        if @beneficiary.save 
+            redirect_to beneficiary_path(@beneficiary)
+        else
+            render 'edit'
+        end
     end
 
     private 
@@ -27,6 +27,11 @@ class BeneficiariesController < ApplicationController
     def set_beneficiary
         @beneficiary = Beneficiary.find_by(id: params[:id])
     end
+
+    def locals
+        @locals = Beneficiary.where(state: current_business.state) 
+    end
+
 end
 
 

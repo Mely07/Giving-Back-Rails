@@ -9,11 +9,12 @@
 
 <%=render partial: 'philanthropic_initiatives/philanthropic_initiatives', locals: {philanthropic_initiatives: @business.philanthropic_initiatives}%>
 
-<a href="<%=new_business_philanthropic_initiative_path(@business)%>" class="btn btn-secondary my-2 btn-sm">Add Initiative</a>
-<br/>
-<br/>
-<br/>
-
-<a href="<%=edit_business_path(@business)%>" class="btn btn-light my-2 btn-sm">Edit Business</a><br/>
-<%=button_to "Delete", @business, method: :delete, class: "btn btn-light my-2 btn-sm" %>
+<%if @business == current_business%>
+    <a href="<%=new_business_philanthropic_initiative_path(@business)%>" class="btn btn-secondary my-2 btn-sm">Add Initiative</a>
+    <br/>
+    <br/>
+    <br/>
+    <a href="<%=edit_business_path(@business)%>" class="btn btn-light my-2 btn-sm">Edit Business</a><br/>
+    <%=button_to "Delete", @business, method: :delete, class: "btn btn-light my-2 btn-sm" %>
+<%end%>
 

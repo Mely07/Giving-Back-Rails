@@ -23,31 +23,27 @@
     <div class="form-group row">
         <%= pi_f.label "Amount:", class: "col-sm-1 col-form-label" %>
         <div class="col-sm-3">
-            <%= pi_f.text_field :pledged_amount, class:"form-control"%>
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+            </div>
+            <%= pi_f.text_field :pledged_amount, class:"col-sm-9 form-control"%>
+            <div class="input-group-append">
+                <div class="input-group-text">.00</div>
+            </div>
+            </div> 
         </div>
     </div>
-
- <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <div class="input-group-text">$</div>
-  </div>
-  <input type="text" class="col-sm-2 form-control" aria-label="Amount (to the nearest dollar)">
-  <div class="input-group-append">
-    <div class="input-group-text">.00</div>
-  </div>
-</div> 
-
-
 
     <div class="form-group row">
         <%= pi_f.label "Goal:", class: "col-sm-1 col-form-label" %>
         <div class="col-sm-3">
-            <%= pi_f.text_field :goal, class:"form-control"%>
+            <%= pi_f.text_area :goal, class:"form-control"%>
         </div>
     </div>
 
    <h6>Beneficiary</h6>
-        <%= pi_f.fields_for :beneficiary do |beneficiary_f| %>
+        <%= pi_f.fields_for :beneficiary, @philanthropic_initiative.beneficiary do |beneficiary_f| %>
 
             <div class="form-group row">
                 <%= beneficiary_f.label "Recipient:", class: "col-sm-1 col-form-label" %>

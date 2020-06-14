@@ -4,6 +4,7 @@ class PhilanthropicInitiative < ApplicationRecord
 
     before_save :titleize
     validates_presence_of :name, :goal 
+    validates :pledged_amount, numericality: { only_integer: true }
 
     validates :goal, length: {minimum: 15}
     
