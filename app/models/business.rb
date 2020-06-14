@@ -19,9 +19,8 @@ class Business < ApplicationRecord
 
     private
     def website_format
-        unless website && website.match(
-            /^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\.(xn--)?([a-z0-9\-]{1,61}|[a-z0-9-]{1,30}\.[a-z]{2,})$/)
-            errors.add(:website, "must be in a valid format, for example: 123.abc")
+        unless website && website.match(/^[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)?$/)
+            errors.add(:website, "must be in a valid format, for example: learn.co")
         end
     end
 
@@ -30,7 +29,6 @@ class Business < ApplicationRecord
         self.name = self.name.split.map(&:capitalize).join(' ')
         self.city = self.city.split.map(&:capitalize).join(' ')
     end
-
 end
 
 

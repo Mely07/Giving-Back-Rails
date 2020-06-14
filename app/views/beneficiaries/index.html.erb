@@ -4,11 +4,12 @@
     <%end%>
 </ul>
 
-
 <h6 class="mt-4">Beneficiaries in your area:</h6>
 <ul>
     <%@locals.each do |l|%>
-        <li><%=l.recipient%></li>
+        <li><%=link_to l.recipient, beneficiary_path(l), class: "text-info"  %>
+        <%l.businesses.each do |b|%> -
+        <%=b.name%><%end%></li>
     <%end%>
 </ul> 
 

@@ -1,7 +1,6 @@
 class BusinessesController < ApplicationController
     before_action :set_business, :logged_in, only: [:index, :show, :edit, :update, :destroy]
     before_action :correct_business, only: [:edit, :update, :destroy]
-  
 
     def index 
         @businesses = Business.all
@@ -17,6 +16,7 @@ class BusinessesController < ApplicationController
         @business = Business.create(business_params)
         if @business.save
             session[:business_id] = @business.id
+            flash.sweep
             redirect_to business_path(@business)
         else 
             render :new
@@ -32,15 +32,22 @@ class BusinessesController < ApplicationController
 
     def update 
         @business.update(business_params)
-            if @business.save 
-                redirect_to business_path(@business)
-            else
-                render 'edit'
-            end
+        
+        if @business.save 
+            redirect_to business_path(@business)
+        else
+            render 'edit'
+        end
     end
 
     def destroy
-        @business.destroy
+        @philanthropic_initiatives = @business.philanthropic_initiatives
+        @philanthropic_initiatives.each do |p|
+            p.beneficiary.delete
+        end 
+        @philanthropic_initiatives.destroy_all
+        @business.delete
+        redirect_to root_path
     end
 
     private

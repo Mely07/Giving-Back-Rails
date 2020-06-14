@@ -1,14 +1,14 @@
 <section class="jumbotron text-center bg-white">
-<div class="container">
-      <img src="https://www.intrasoft-intl.com/sites/default/files/inline-images/csr392130478_0.png" class="img-fluid" alt="Corporate Social Responsibility image" style="width: 55%;">
-      <h1>Welcome!</h1>
-      <p class="lead text-muted">Giving Back, a Corporate Social Responsibility App. For companies wishing to do good.</p>
-      <%if !current_business%>
-      <p>
-        <a href="<%=signin_path%>" class="btn btn-secondary my-2">Log In</a>
-        <a href="auth/google_oauth2" class="btn btn-secondary my-2">Log In With Google</a>
-        <a href="<%=new_business_path%>" class="btn btn-secondary my-2">Sign Up</a>
-      </p>
-      <%end%>
-</div>
-  </section>
+  <div class="container">
+        <img src="https://www.intrasoft-intl.com/sites/default/files/inline-images/csr392130478_0.png" class="img-fluid" alt="Corporate Social Responsibility image" style="width: 55%;">
+        <h1>Welcome!</h1>
+        <p class="lead text-muted">Giving Back, a Corporate Social Responsibility App. For companies wishing to do good.</p>
+        <%if !current_business%>
+          <p>
+            <a href="<%=signin_path%>" class="btn btn-secondary my-2">Log In</a>
+            <a href="auth/google_oauth2" class="btn btn-secondary my-2">Log In With Google</a>
+            <a href="<%=new_business_path%>" class="btn btn-secondary my-2">Sign Up</a>
+          </p>
+        <%end%>
+  </div>
+</section>

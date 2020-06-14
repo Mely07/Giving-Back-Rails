@@ -10,7 +10,8 @@
     <li><%=link_to @philanthropic_initiative.beneficiary.recipient, beneficiary_path(@philanthropic_initiative.beneficiary), class: "text-info"  %></li>
 </ul>
 <br/>
+
 <%if @business == current_business%>
-<a href="<%=edit_business_philanthropic_initiative_path(@philanthropic_initiative.business, @philanthropic_initiative)%>" class="btn btn-light my-2 btn-sm">Edit Initiative</a><br/>
-<%=button_to "Delete", @philanthropic_initiative, method: :delete, class: "btn btn-light my-2 btn-sm" %>
+    <a href="<%=edit_business_philanthropic_initiative_path(@philanthropic_initiative.business, @philanthropic_initiative)%>" class="btn btn-light my-2 btn-sm">Edit Initiative</a><br/>
+    <%=button_to "Delete", @philanthropic_initiative, method: :delete, class: "btn btn-light my-2 btn-sm" %>
 <%end%>

@@ -13,15 +13,6 @@ This repo subscribes to the Contributor Code of Conduct, based on the Contributo
 This code is available as open source under the terms of the [MIT License] (https://opensource.org/licenses/MIT. 
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-Things you may want to cover:
-
-* Ruby version
-* System dependencies
-* Configuration
-* Database creation
-* Database initialization
 
 
 

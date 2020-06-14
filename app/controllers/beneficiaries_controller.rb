@@ -31,7 +31,6 @@ class BeneficiariesController < ApplicationController
     def locals
         @locals = Beneficiary.where(state: current_business.state) 
     end
-
 end
 
 

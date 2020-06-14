@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
         @business = Business.find_or_create_by(email: auth['info']['email'])
          if @business.id == nil 
             flash[:danger] = "Complete signup process"
-            redirect 'businesses/_form' 
+            render 'businesses/_form' 
          else
             session[:business_id] = @business.id
             redirect_to business_path(@business)
@@ -39,5 +39,4 @@ class SessionsController < ApplicationController
     def auth
         request.env['omniauth.auth']
     end
-
 end

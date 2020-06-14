@@ -7,6 +7,6 @@
 <h6>Tech Companies:</h6>
 <ul>
     <%@in_tech.each do |t|%>
-      <li> <%=t.name%></li>
+      <li><%=link_to t.name, business_path(t), class: "text-info" %></li>
     <%end%>
 </ul>

@@ -12,7 +12,7 @@ class PhilanthropicInitiative < ApplicationRecord
 
     private 
     def titleize
-        self.goal = self.goal.capitalize
+        self.goal[0] = self.goal[0].capitalize
         self.name = self.name.split.map(&:capitalize).join(' ')
     end
 end
