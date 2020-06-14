@@ -22,7 +22,8 @@ class SessionsController < ApplicationController
     def googleAuth
         @business = Business.find_or_create_by(email: auth['info']['email'])
          if @business.id == nil 
-            render 'businesses/edit' 
+            flash[:danger] = "Complete signup process"
+            redirect 'businesses/_form' 
          else
             session[:business_id] = @business.id
             redirect_to business_path(@business)

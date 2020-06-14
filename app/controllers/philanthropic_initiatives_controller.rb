@@ -1,6 +1,7 @@
 class PhilanthropicInitiativesController < ApplicationController
     before_action :set_philanthropic_initiative, :logged_in
-    before_action :correct_business, only: [:new, :create, :edit, :update]
+    before_action :correct_business, only: [:new, :edit]
+    before_action :correct_business_post, only: [:create, :update]
 
     def index
         @philanthropic_initiatives = PhilanthropicInitiative.all
@@ -11,16 +12,17 @@ class PhilanthropicInitiativesController < ApplicationController
         @philanthropic_initiative.build_beneficiary
     end
 
-    def create 
-        @philanthropic_initiative = PhilanthropicInitiative.create(philanthropic_initiative_params) 
+    def create
+        @philanthropic_initiative = PhilanthropicInitiative.create(philanthropic_initiative_params)
         if @philanthropic_initiative.save
-            redirect_to philanthropic_initiatives_path
+            redirect_to philanthropic_initiative_path(@philanthropic_initiative)
         else 
             render 'new'
         end
     end
 
     def show 
+        @business = @philanthropic_initiative.business
     end
 
     def edit 
@@ -28,7 +30,6 @@ class PhilanthropicInitiativesController < ApplicationController
 
     def update 
         @philanthropic_initiative.update(philanthropic_initiative_params)
-
         if @philanthropic_initiative.save
             redirect_to philanthropic_initiative_path(@philanthropic_initiative)
         else 
@@ -37,12 +38,15 @@ class PhilanthropicInitiativesController < ApplicationController
     end
 
     def destroy
-        if current_business.id == @philanthropic_initiative.business.id
+        if current_business.id == @philanthropic_initiative.business_id
             @beneficiary = @philanthropic_initiative.beneficiary 
             @philanthropic_initiative.delete
             @beneficiary.delete
+            redirect_to business_path(current_business)
+        else
+            flash[:danger] = "Unauthorized access!"
+            redirect_to business_path(current_business)
         end
-        redirect_to business_path(current_business)
     end
     
     private
@@ -56,7 +60,15 @@ class PhilanthropicInitiativesController < ApplicationController
 
     def correct_business
         if current_business.id != params[:business_id].to_i
-            redirect_to root_path
+            flash[:danger] = "Unauthorized access!"
+            redirect_to business_path(current_business)
+        end
+    end
+
+    def correct_business_post
+        if current_business.id != params[:philanthropic_initiative][:business_id].to_i
+            flash[:danger] = "Unauthorized request!"
+            redirect_to business_path(current_business)
         end
     end
 end

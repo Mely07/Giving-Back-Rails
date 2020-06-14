@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
     before_action :set_business, :logged_in, only: [:index, :show, :edit, :update, :destroy]
     before_action :correct_business, only: [:edit, :update, :destroy]
+  
 
     def index 
         @businesses = Business.all
@@ -54,7 +55,7 @@ class BusinessesController < ApplicationController
     def correct_business
         if current_business.id != params[:id].to_i
             flash[:danger] = "Unauthorized access!"
-            redirect_to root_path
+            redirect_to business_path(current_business)
         end
     end
 end
