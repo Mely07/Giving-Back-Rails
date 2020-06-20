@@ -4,12 +4,22 @@ class PhilanthropicInitiativesController < ApplicationController
     before_action :correct_business_post, only: [:create, :update]
 
     def index
-        @philanthropic_initiatives = PhilanthropicInitiative.all
+        if params[:business_id] 
+            if Business.find_by(id: params[:business_id])
+                @philanthropic_initiatives = Business.find(params[:business_id]).philanthropic_initiatives
+            else
+              flash[:alert] = "Business not found."
+              redirect_to businesses_path
+            end
+        else
+            @philanthropic_initiatives = PhilanthropicInitiative.all
+        end
     end
 
     def new 
         @philanthropic_initiative = PhilanthropicInitiative.new(business_id: params[:business_id])
         @philanthropic_initiative.build_beneficiary
+        #@pi.beneficiary = Beneficiary.new
     end
 
     def create
@@ -21,13 +31,35 @@ class PhilanthropicInitiativesController < ApplicationController
         end
     end
 
-    def show 
-        @business = @philanthropic_initiative.business
+    def show
+        if !@philanthropic_initiative
+            redirect_to philanthropic_initiatives_path, alert: "Initiative not found"
+        else 
+            @business = @philanthropic_initiative.business
+        end
+        
+        if params[:business_id]
+            @business = Business.find_by(id: params[:business_id])
+            philanthropic_initiative = @business.philanthropic_initiatives.find_by(id: params[:id])
+            if @philanthropic_initiative.nil?
+                redirect_to business_philanthropic_initiatives_path(@business), alert: "Initiative not found"
+            end
+        end
     end
 
     def edit 
+        if params[:business_id]
+            @business = Business.find_by(id: params[:business_id])
+            philanthropic_initiative = @business.philanthropic_initiatives.find_by(id: params[:id])
+            if @philanthropic_initiative.nil?
+                redirect_to business_philanthropic_initiatives_path(@business), alert: "Initiative not found"
+            elsif !philanthropic_initiative
+                flash[:danger] = "Unauthorized request!"
+                redirect_to  business_path(@business)
+            end
+        end
     end
-
+ 
     def update 
         @philanthropic_initiative.update(philanthropic_initiative_params)
         if @philanthropic_initiative.save

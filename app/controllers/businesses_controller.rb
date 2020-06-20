@@ -8,8 +8,13 @@ class BusinessesController < ApplicationController
     end
 
     def new 
-        @business = Business.new
-        @business.philanthropic_initiatives.build 
+        if current_business 
+            redirect_to business_path(current_business)
+        else
+            @business = Business.new
+            @business.philanthropic_initiatives.build 
+            #PhilanthropicInitiative.new(business_id: @business.id)
+        end
     end
 
     def create 
@@ -24,7 +29,11 @@ class BusinessesController < ApplicationController
     end
 
     def show 
-        @philanthropic_initiatives = @business.philanthropic_initiatives
+        if @business
+            @philanthropic_initiatives = @business.philanthropic_initiatives
+        else 
+            redirect_to root_path
+        end
     end
    
     def edit 

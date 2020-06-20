@@ -8,6 +8,9 @@ class BeneficiariesController < ApplicationController
     end
 
     def show 
+        if !@beneficiary
+            redirect_to root_path
+        end
     end
 
     def update 
