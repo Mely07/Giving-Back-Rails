@@ -13,7 +13,6 @@ class BusinessesController < ApplicationController
         else
             @business = Business.new
             @business.philanthropic_initiatives.build 
-            #PhilanthropicInitiative.new(business_id: @business.id)
         end
     end
 

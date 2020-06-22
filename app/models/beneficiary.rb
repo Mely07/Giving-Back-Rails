@@ -6,11 +6,6 @@ class Beneficiary < ApplicationRecord
     validates_presence_of :recipient, :city, :state
     validates :state, length: { is: 2 }
     
-
-    accepts_nested_attributes_for :businesses
-    accepts_nested_attributes_for :philanthropic_initiatives
-    
-
     private
     def titleize
         self.state = self.state.upcase 

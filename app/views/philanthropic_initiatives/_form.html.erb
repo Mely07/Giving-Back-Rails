@@ -43,7 +43,7 @@
     </div>
 
    <h6>Beneficiary</h6>
-        <%= pi_f.fields_for :beneficiary do |beneficiary_f| %>
+        <%= pi_f.fields_for :beneficiary, @philanthropic_initiative.beneficiary do |beneficiary_f| %>
 
             <div class="form-group row">
                 <%= beneficiary_f.label "Recipient:", class: "col-sm-1 col-form-label" %>

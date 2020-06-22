@@ -11,7 +11,6 @@ class Business < ApplicationRecord
     validates :state, length: { is: 2 }
     validates :password, length: { in: 6..10 }
     
-    accepts_nested_attributes_for :beneficiaries
     accepts_nested_attributes_for :philanthropic_initiatives
     
     

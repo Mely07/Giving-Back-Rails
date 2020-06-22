@@ -19,7 +19,13 @@ class PhilanthropicInitiativesController < ApplicationController
     def new 
         @philanthropic_initiative = PhilanthropicInitiative.new(business_id: params[:business_id])
         @philanthropic_initiative.build_beneficiary
-        #@pi.beneficiary = Beneficiary.new
+        # def new
+        #     if params[:business_id] && !Business.exists?(params[:business_id])
+        #       redirect_to businesses_path, alert: "Business not found."
+        #     else
+        #       @philanthropic_initiative = PhilanthropicInitiative.new(business_id: params[:business_id])
+        #     end
+        # end   
     end
 
     def create
@@ -37,14 +43,13 @@ class PhilanthropicInitiativesController < ApplicationController
         else 
             @business = @philanthropic_initiative.business
         end
-        
-        if params[:business_id]
-            @business = Business.find_by(id: params[:business_id])
-            philanthropic_initiative = @business.philanthropic_initiatives.find_by(id: params[:id])
-            if @philanthropic_initiative.nil?
-                redirect_to business_philanthropic_initiatives_path(@business), alert: "Initiative not found"
-            end
-        end
+        # if params[:business_id]
+        #     @business = Business.find_by(id: params[:business_id])
+        #     philanthropic_initiative = @business.philanthropic_initiatives.find_by(id: params[:id])
+        #     if @philanthropic_initiative.nil?
+        #         redirect_to business_philanthropic_initiatives_path(@business), alert: "Initiative not found"
+        #     end
+        # end
     end
 
     def edit 
