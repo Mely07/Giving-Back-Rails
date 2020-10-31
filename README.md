@@ -4,7 +4,7 @@
 " target="_blank"><img src="http://img.youtube.com/vi/5nCsvMZMjTA/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
-Giving Back is a content management web application built using the Rails framework, that allows users (in this case businesses) to create or add new philanthropic initiatives and beneficiaries on their accounts to show and share their support to the local community. With the use of forms new and altered data is persisted and retrieved to and from a database. User can login and out of the application, view other user’s account to see their profiles -- including inititatives and beneficiaries -- but NOT edit nor delete their data. User can also message other users via email. 
+Giving Back is a content management web application built using the Rails framework, that allows users (in this case businesses) to create or add new philanthropic initiatives and beneficiaries on their accounts to show and share their support to the local community. With the use of forms new and altered data is persisted and retrieved to and from a database. Users can login and out of the application, view other users accounts to see their profiles -- including initiatives and beneficiaries -- but NOT edit or delete their data. Users can also message other users via email. 
 
 ## Prerequisites
 Before you begin, 
