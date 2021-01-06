@@ -8,11 +8,11 @@ class BusinessesController < ApplicationController
     end
 
     def new 
-        if current_business 
+        if current_business    
             redirect_to business_path(current_business)
         else
             @business = Business.new
-            @business.philanthropic_initiatives.build 
+            #@business.philanthropic_initiatives.build 
         end
     end
 
@@ -20,7 +20,7 @@ class BusinessesController < ApplicationController
         @business = Business.create(business_params)
         if @business.save
             session[:business_id] = @business.id
-            flash.sweep
+            flash.sweep 
             redirect_to business_path(@business)
         else 
             render :new
@@ -60,7 +60,7 @@ class BusinessesController < ApplicationController
 
     private
     def business_params
-        params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password, :password_confirmation, philanthropic_initiatives_attributes: [:name, :pledged_amount, :goal, beneficiary_attributes: [:recipient, :city, :state]] )
+        params.require(:business).permit(:name, :sector, :city, :state, :website, :email, :password, :password_confirmation) #, philanthropic_initiatives_attributes: [:name, :pledged_amount, :goal, beneficiary_attributes: [:recipient, :city, :state]] )
     end
 
     def set_business 

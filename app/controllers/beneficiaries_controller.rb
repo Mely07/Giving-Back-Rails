@@ -2,7 +2,7 @@ class BeneficiariesController < ApplicationController
     before_action :set_beneficiary, :logged_in
 
     def index
-        @beneficiaries = Beneficiary.all
+        @beneficiaries = Beneficiary.all.sort_by {|s| s.recipient}
         @business = current_business
         locals 
     end

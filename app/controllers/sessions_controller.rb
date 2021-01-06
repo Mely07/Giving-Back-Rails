@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     before_action :logged_in, only: [:destroy]
     
     def new 
-       @businesses = Business.all
+       #@businesses = Business.all 
     end
 
     def create 
@@ -37,6 +37,6 @@ class SessionsController < ApplicationController
       
     private
     def auth
-        request.env['omniauth.auth']
+        request.env['omniauth.auth'] 
     end
 end
