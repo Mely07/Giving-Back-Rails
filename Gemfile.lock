@@ -158,8 +158,10 @@ GEM
       method_source (~> 1.0)
       spoon (~> 0.0)
     public_suffix (4.0.5)
-    puma (3.12.6)
-    puma (3.12.6-java)
+    puma (4.3.11)
+      nio4r (~> 2.0)
+    puma (4.3.11-java)
+      nio4r (~> 2.0)
     racc (1.5.2)
     racc (1.5.2-java)
     rack (2.2.3)
@@ -273,7 +275,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   pry
-  puma (~> 3.11)
+  puma (~> 4.3)
   rack-flash3
   rails (~> 5.2.4, >= 5.2.4.3)
   sass-rails (~> 5.0)
